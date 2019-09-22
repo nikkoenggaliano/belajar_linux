@@ -19,6 +19,11 @@ $path = __DIR__.'/uploaded/';
 if(!is_dir($path)){
         @mkdir($path);
         @chmod($path, 0000);
+        if(!is_dir($path)){
+          echo "You should create your own uploaded folder<br>";
+          echo "By running in your shell<br>";
+          echo "<b>mkdir uploaded && chmod 000 uploaded</b>";
+        }
 }
         $path = $path . basename( $_FILES['uploaded_file']['name']);
 
@@ -26,7 +31,7 @@ if(!is_dir($path)){
       echo "The file ".  basename( $_FILES['uploaded_file']['name']).
       " has been uploaded";
     } else{
-        echo "There was an error uploading the file, The error cause permission for folder uploaded";
+        echo "There was an error uploading the file, The error cause permission for folder uploaded<br>Please check the permission folder uploaded or if uploaded folder not exist create manualy!";
     }
   }
 ?>
